@@ -71,7 +71,7 @@
 ## 使用说明
 
 1. 下载项目:
-    - 源码地址：https://qaqbuyan.com:88/乔安文件/文件/qq-music/upload.zip
+    - 源码地址： [upload.zip](https://qaqbuyan.com:88/乔安文件/文件/qq-music/upload.zip)
     - 固件版本：1.8.5
 
 2. 解压到任意目录
