@@ -5,13 +5,15 @@
 
 ![随机播放个人歌单](demo.png)
 
-这是一个由虾哥开源的[ESP32项目](https://github.com/78/xiaozhi-esp32)，更改而来，整合了 QQ 音乐播放功能，允许任何人免费使用，但是不可用于商业用途。
+这是一个由虾哥开源的[ESP32项目](https://github.com/78/xiaozhi-esp32)，更改而来，整合了 QQ 音乐播放功能，允许任何人免费使用，但是不可用于商业用途
 
 本项目参考了以下项目：
+
     - [xiaozhi-esp32](https://github.com/78/xiaozhi-esp32)
     - [xiaozhi-esp32-music](https://github.com/Maggotxy/xiaozhi-esp32-music)
 
-本项目仅供学习和研究使用。项目不自带cookies，请自备cookies。如果有任何问题，请及时提出 Issues。
+本项目仅供学习和研究使用。项目不自带cookies，请自备cookies
+如果有任何问题，请及时提出 Issues
 项目主要贡献者：[qaq卟言](https://space.bilibili.com/86920865)（B站UP）
 
 ## 视频展示
@@ -62,8 +64,8 @@
 - main\application.h
 - main\display\display.cc
 - main\display\display.h
-- main\audio\audio_service.cc
-- main\audio\audio_service.h
+- main\display\lcd_display.cc
+- main\display\lcd_display.h
 - main\idf_component.yml
 
 &emsp;
@@ -88,7 +90,7 @@
 6. 如果点歌功能失败，在人物介绍中填入
     - 收到点歌的需求时，立刻使用 MPC tool self.music.search_play_music 工具，同时禁止使用 search_music 功能。
 
-7. 如果需要（批量）下载VIP/付费音乐资源，需要先上运行 xz.py 脚本
+7. 如果需要（批量）下载VIP/付费音乐资源，需要先运行 xz.py 脚本
     - 修改 xz.py 脚本中对应的 async def async_main() 函数中的 mids 定义
     - 运行 xz.py 脚本(python xz.py)
     - 脚本会自动下载音乐资源到当前目录
