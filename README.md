@@ -77,7 +77,7 @@
 
 1. 下载项目:
     - 固件源码： [xiaozhi-esp32-qq-music.zip](https://qaqbuyan.com:88/乔安文件/文件/qq-music/xiaozhi-esp32-qq-music.zip)
-    - 接口源码： [api.zip](https://qaqbuyan.com:88/乔安文件/文件/qq-music/api.zip)
+    - 接口源码： [qq-music-api](https://github.com/qaqbuyan/qq-music-api)
     - 固件版本：1.8.5
 
 2. 解压到任意目录
@@ -92,8 +92,11 @@
 
 5. 编译并烧录 esp32 项目
 
-6. 如果点歌功能失败，在人物介绍中填入
+6. 如果点歌功能失败，解决方法有两个
+   1.在人物介绍中填入
     - 收到点歌的需求时，立刻使用 MPC tool self.music.search_play_music 工具，同时禁止使用 search_music 功能。
+   2.关闭音乐服务
+    - MCP设置->官方服务->取消音乐
 
 7. 如果需要（批量）播放（下载）VIP/付费音乐资源，需要先运行 download.py 脚本
     - 修改 download.py 脚本中对应的 async def async_main() 函数中的 mids 定义
@@ -104,23 +107,6 @@
 &emsp;
 
 ## 自带功能
-
-- 音乐接口
-    - 📁 音乐缓存
-    - 🔍 音乐搜索
-    - ❔  分享链接解析
-    - 📊 排行榜获取
-    - 📑 收藏歌单获取
-    - 📰 推荐歌单获取
-    - 📰 个人歌单获取
-    - ⏰ 新歌获取
-    - 💾 缓存仓库获取
-    - 🎵 获取歌曲播放链接（支持多种音质）
-    - 🎶 特定歌单获取
-    - 🎧 获取歌曲音质列表
-    - 📝 获取歌词
-    - 📊 获取所有歌单信息、用户创建的歌单信息、用户收藏的歌单信息
-    - 🖼️ 获取歌曲封面
 
 - 音乐播放
     - [x] 🔍 点歌
