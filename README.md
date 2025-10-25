@@ -16,7 +16,7 @@
 如果有任何问题，请及时提出 Issues
 项目主要贡献者：[qaq卟言](https://space.bilibili.com/86920865)（B站UP）
 
-[更新日志](update.md)
+[固件更新日志](update.md)
 
 ## 视频展示
 
@@ -43,7 +43,8 @@
 - qq_music：配套的音乐源代码
     - 主要文件
         - index.php：主要的服务器端文件，处理音乐请求和返回结果
-        - xz.py：VIP/付费音乐资源 下载工具文件，用于下载VIP/付费音乐资源（支持批量下载）
+        - download.py：VIP/付费音乐资源 下载工具文件，用于下载VIP/付费音乐资源（支持批量下载）
+        - update.py：获取新添加的到歌单音乐（不在仓库中的），用于 download.py 下载补充不存在的音乐
 
 &emsp;
 
@@ -75,15 +76,17 @@
 ## 使用说明
 
 1. 下载项目:
-    - 源码地址： [upload.zip](https://qaqbuyan.com:88/乔安文件/文件/qq-music/upload.zip)
+    - 固件源码： [xiaozhi-esp32-qq-music.zip](https://qaqbuyan.com:88/乔安文件/文件/qq-music/xiaozhi-esp32-qq-music.zip)
+    - 接口源码： [api.zip](https://qaqbuyan.com:88/乔安文件/文件/qq-music/api.zip)
     - 固件版本：1.8.5
 
 2. 解压到任意目录
 
 3. 修改配置
-    - 修改 index.php 音乐的 cookies
+    - 修改 index.php 音乐的 cookies（需要登入，否则无法获取歌单｛除非你公开个人信息｝）
     - 修改 play_music.cc 的 Music_API 为自己的服务器地址
-    - 修改 xz.py 的 Music_API 为自己的服务器地址
+    - 修改 download.py 的 Music_API 为自己的服务器地址（下载付费音源使用）
+    - 修改 update.py 的 Music_API 为自己的服务器地址（更新新歌使用）
 
 4. 上传 index.php 到服务器（需要安装curl扩展）
 
@@ -92,9 +95,9 @@
 6. 如果点歌功能失败，在人物介绍中填入
     - 收到点歌的需求时，立刻使用 MPC tool self.music.search_play_music 工具，同时禁止使用 search_music 功能。
 
-7. 如果需要（批量）下载VIP/付费音乐资源，需要先运行 xz.py 脚本
-    - 修改 xz.py 脚本中对应的 async def async_main() 函数中的 mids 定义
-    - 运行 xz.py 脚本(python xz.py)
+7. 如果需要（批量）播放（下载）VIP/付费音乐资源，需要先运行 download.py 脚本
+    - 修改 download.py 脚本中对应的 async def async_main() 函数中的 mids 定义
+    - 运行 download.py 脚本(python download.py)
     - 脚本会自动下载音乐资源到当前目录
     - 下载完成后，将音乐资源上传到服务器 index.php 同级的 music 目录下
 
@@ -123,7 +126,9 @@
     - [x] 🔍 点歌
     - [x] 🎵 批量播放（个人歌单、收藏歌单、排行榜、缓存仓库）
     - [x] 🔄 切换模式（顺序播放、随机播放）
-    - [x] 📝 显示歌词
+    - [x] 📝 歌词显示
+    - [x] 💽 封面显示
+    - [x] 〰️ 进度条显示
     - [ ] ⏸ 暂停播放
     - [ ] ⏭ 下一首
     - [ ] ⏮ 上一首
@@ -132,7 +137,7 @@
 
 ## 注意事项
 1. 本项目不提供任何形式的技术支持：
-    - 第三方接口问题
+    - 第三方接口稳定性问题
 2. 若将服务部署到公网，强烈建议更改 UA 请求头(这样仅放行允许的 UA 的请求)限制请求范围，以防 api 被他人滥用，导致服务器响应慢或流量被占满等问题
 3. 在4G网络下无法播放音乐，需要切换到 Wi-Fi 模式才可以正常播放
 
